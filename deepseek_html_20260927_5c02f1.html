@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conselho Tutelar — Unidade Paranoá</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-900: #0b1220; --primary-800: #0f172a; --primary-700: #1e293b; --primary-600: #334155;
+  --accent: #2563eb; --accent-hover: #1d4ed8; --accent-soft: #dbeafe; --gold: #d4a847;
+  --background: #eef2f7; --surface: #ffffff; --surface-2: #f8fafc;
+  --text: #0f172a; --text-muted: #64748b;
+  --border: #e2e8f0; --border-strong: #cbd5e1;
+  --danger: #dc2626; --success: #059669; --warning: #d97706;
+  --shadow-xs: 0 1px 2px rgba(15,23,42,.04);
+  --shadow-sm: 0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
+  --shadow-md: 0 4px 12px rgba(15,23,42,.08), 0 2px 4px rgba(15,23,42,.04);
+  --shadow-lg: 0 12px 28px rgba(15,23,42,.12), 0 4px 10px rgba(15,23,42,.06);
+  --shadow-xl: 0 24px 48px rgba(15,23,42,.18), 0 8px 16px rgba(15,23,42,.08);
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px; --radius-xl: 20px;
+}
+* { box-sizing: border-box; }
+body { font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--background); color:var(--text); margin:0; padding:0; font-size:14px; -webkit-font-smoothing:antialiased; }
+header { background:linear-gradient(135deg,#0b1220 0%,#1e293b 50%,#1e3a8a 100%); color:#fff; padding:16px 32px; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--shadow-lg); position:relative; overflow:hidden; border-bottom:3px solid var(--gold); }
+header::before { content:''; position:absolute; top:-50%; right:-10%; width:500px; height:500px; background:radial-gradient(circle,rgba(37,99,235,.25) 0%,transparent 70%); pointer-events:none; }
+header::after { content:''; position:absolute; bottom:-100%; left:-5%; width:400px; height:400px; background:radial-gradient(circle,rgba(212,168,71,.12) 0%,transparent 70%); pointer-events:none; }
+.header-title { display:flex; align-items:center; gap:16px; position:relative; z-index:1; }
+.logo-box { background:linear-gradient(135deg,var(--accent) 0%,#1e40af 100%); color:#fff; font-weight:800; border-radius:50%; width:48px; height:48px; display:flex; align-items:center; justify-content:center; font-size:16px; letter-spacing:.5px; box-shadow:0 0 0 3px rgba(255,255,255,.1), 0 8px 20px rgba(37,99,235,.4); border:2px solid rgba(255,255,255,.15); }
+header h1 { margin:0; font-size:17px; letter-spacing:.6px; font-weight:700; background:linear-gradient(135deg,#fff 0%,#cbd5e1 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+header .subtitle { font-size:11px; color:#94a3b8; display:flex; align-items:center; gap:6px; margin-top:4px; font-weight:500; letter-spacing:.8px; text-transform:uppercase; }
+header .subtitle::before { content:''; width:6px; height:6px; background:var(--gold); border-radius:50%; box-shadow:0 0 8px var(--gold); }
+.header-stats { display:flex; gap:10px; font-size:12px; position:relative; z-index:1; }
+.stat-badge { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); padding:8px 14px; border-radius:8px; font-weight:600; backdrop-filter:blur(10px); transition:all .2s; font-size:11px; letter-spacing:.4px; }
+.stat-badge:hover { background:rgba(255,255,255,.14); transform:translateY(-1px); }
+nav.tabs { background:var(--surface); border-bottom:1px solid var(--border); display:flex; padding:0 32px; gap:2px; flex-wrap:wrap; box-shadow:var(--shadow-xs); position:sticky; top:0; z-index:100; }
+.tab-btn { background:none; border:none; padding:16px 22px; font-weight:600; color:var(--text-muted); cursor:pointer; border-bottom:3px solid transparent; font-size:13px; text-transform:uppercase; letter-spacing:.5px; transition:all .25s ease; position:relative; font-family:inherit; }
+.tab-btn:hover { color:var(--accent); background:var(--surface-2); }
+.tab-btn.active { color:var(--accent); border-bottom-color:var(--accent); background:linear-gradient(to top,var(--accent-soft) 0%,transparent 100%); }
+.tab-btn.active::after { content:''; position:absolute; bottom:-1px; left:20%; right:20%; height:3px; background:var(--accent); border-radius:3px 3px 0 0; box-shadow:0 0 12px rgba(37,99,235,.5); }
+main { max-width:100%; margin:28px auto; padding:0 32px; }
+.tab-content { display:none; }
+.tab-content.active { display:block; animation:fadeInUp .3s ease-out; }
+@keyframes fadeInUp { from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+.card { background:var(--surface); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); padding:24px; margin-bottom:24px; border:1px solid var(--border); transition:box-shadow .3s ease; }
+.card:hover { box-shadow:var(--shadow-md); }
+.card-title { font-size:13px; font-weight:700; color:var(--primary-800); margin-bottom:20px; text-transform:uppercase; letter-spacing:.8px; border-bottom:2px solid var(--border); padding-bottom:12px; display:flex; justify-content:space-between; align-items:center; position:relative; }
+.card-title::before { content:''; position:absolute; bottom:-2px; left:0; width:48px; height:2px; background:linear-gradient(90deg,var(--accent),var(--gold)); border-radius:2px; }
+.form-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:16px; }
+.form-group { display:flex; flex-direction:column; }
+label { font-size:11px; font-weight:700; margin-bottom:6px; color:var(--primary-600); text-transform:uppercase; letter-spacing:.5px; }
+input,select,textarea { padding:10px 12px; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:13px; background:#fff; color:var(--text); font-family:inherit; transition:all .2s ease; }
+input:hover,select:hover,textarea:hover { border-color:var(--border-strong); }
+input:focus,select:focus,textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 4px rgba(37,99,235,.12); }
+.btn { background:linear-gradient(135deg,var(--accent) 0%,#1e40af 100%); color:#fff; padding:10px 18px; border:none; border-radius:var(--radius-sm); cursor:pointer; font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.5px; transition:all .2s ease; font-family:inherit; box-shadow:0 2px 4px rgba(37,99,235,.2); position:relative; overflow:hidden; }
+.btn::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent); transition:left .5s; }
+.btn:hover::before { left:100%; }
+.btn:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(37,99,235,.35); }
+.btn:active { transform:translateY(0); }
+.btn:disabled { opacity:.5; cursor:not-allowed; }
+.btn-secondary { background:linear-gradient(135deg,#64748b 0%,#475569 100%); box-shadow:0 2px 4px rgba(100,116,139,.2); }
+.btn-secondary:hover { box-shadow:0 4px 12px rgba(100,116,139,.35); }
+.btn-danger { background:linear-gradient(135deg,#dc2626 0%,#b91c1c 100%); box-shadow:0 2px 4px rgba(220,38,38,.2); }
+.btn-danger:hover { box-shadow:0 4px 12px rgba(220,38,38,.35); }
+.btn-success { background:linear-gradient(135deg,#059669 0%,#047857 100%); box-shadow:0 2px 4px rgba(5,150,105,.2); }
+.btn-success:hover { box-shadow:0 4px 12px rgba(5,150,105,.35); }
+.btn-warning { background:linear-gradient(135deg,#d97706 0%,#b45309 100%); color:#fff; box-shadow:0 2px 4px rgba(217,119,6,.2); }
+.btn-warning:hover { box-shadow:0 4px 12px rgba(217,119,6,.35); }
+.btn-group { display:flex; justify-content:flex-end; gap:12px; margin-top:20px; }
+.barra-letras { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; padding:14px 16px; background:linear-gradient(135deg,#f8fafc 0%,#f1f5f9 100%); border-radius:var(--radius-md); border:1px solid var(--border); align-items:center; }
+.barra-letras-label { font-size:11px; font-weight:700; color:var(--primary-600); text-transform:uppercase; letter-spacing:.5px; margin-right:6px; }
+.btn-letra { background:#fff; color:var(--primary-700); border:1.5px solid var(--border); border-radius:6px; padding:6px 10px; font-weight:700; font-size:12px; cursor:pointer; transition:all .2s ease; min-width:38px; text-align:center; font-family:inherit; display:inline-flex; align-items:center; justify-content:center; gap:4px; position:relative; }
+.btn-letra:hover { background:var(--accent-soft); border-color:var(--accent); color:var(--accent); transform:translateY(-1px); box-shadow:0 3px 8px rgba(37,99,235,.15); }
+.btn-letra.ativo { background:linear-gradient(135deg,var(--accent) 0%,#1e40af 100%); color:#fff; border-color:var(--accent); box-shadow:0 3px 10px rgba(37,99,235,.35); }
+.btn-letra .contador { font-size:9px; font-weight:800; background:rgba(0,0,0,.08); padding:1px 5px; border-radius:8px; min-width:16px; display:inline-block; line-height:1.3; }
+.btn-letra.ativo .contador { background:rgba(255,255,255,.25); color:#fff; }
+.btn-letra-todas { min-width:75px; font-size:11px; padding:6px 12px; }
+.btn-letra-iy { background:#fef9c3; border-color:#eab308; color:#78350f; }
+.btn-letra-iy:hover { background:#fef08a; border-color:#ca8a04; color:#713f12; }
+.btn-letra-iy.ativo { background:linear-gradient(135deg,#d97706 0%,#b45309 100%); color:#fff; border-color:#d97706; box-shadow:0 3px 10px rgba(217,119,6,.35); }
+.barra-letras-resultado { font-size:11.5px; font-weight:600; color:var(--text-muted); margin-left:auto; padding:4px 10px; background:#fff; border-radius:6px; border:1px solid var(--border); }
+.barra-letras-resultado strong { color:var(--accent); }
+.search-bar { display:flex; gap:12px; margin-bottom:16px; }
+.search-bar input { flex:1; padding:12px 16px; border-radius:var(--radius-md); background:var(--surface-2); }
+.search-bar input:focus { background:#fff; }
+table { width:100%; border-collapse:separate; border-spacing:0; margin-top:12px; background:#fff; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-xs); }
+th,td { border-bottom:1px solid var(--border); padding:12px 14px; text-align:left; font-size:12.5px; }
+th { background:linear-gradient(to bottom,#f8fafc,#f1f5f9); color:var(--primary-700); font-weight:700; text-transform:uppercase; font-size:11px; letter-spacing:.5px; border-bottom:2px solid var(--border-strong); }
+tbody tr { transition:background .15s; }
+tbody tr:hover { background:var(--surface-2); }
+tbody tr:last-child td { border-bottom:none; }
+.empty-state { text-align:center; padding:32px; color:var(--text-muted); font-style:italic; font-size:13px; }
+.crianca-row { display:flex; gap:10px; margin-bottom:8px; align-items:center; }
+.pagination-container { display:flex; justify-content:space-between; align-items:center; margin-top:18px; font-size:12px; color:var(--text-muted); }
+.pagination-buttons { display:flex; gap:6px; }
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,.6); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); justify-content:center; align-items:center; z-index:1000; animation:fadeIn .2s ease-out; }
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+.modal.active { display:flex; }
+.modal-card { background:#fff; width:700px; max-width:95vw; max-height:90vh; overflow-y:auto; padding:28px; border-radius:var(--radius-lg); box-shadow:var(--shadow-xl); animation:slideUp .3s ease-out; }
+@keyframes slideUp { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+.modal-capa-content { background:#f1f5f9; width:210mm; max-width:95vw; max-height:90vh; overflow-y:auto; padding:24px; border-radius:var(--radius-lg); box-shadow:var(--shadow-xl); display:flex; flex-direction:column; align-items:center; }
+.capa-impressao { width:210mm; height:297mm; min-height:297mm; max-height:297mm; margin:0 auto; padding:25mm 20mm 20mm 20mm; background:#fff; border:2px solid #000; position:relative; box-sizing:border-box; display:flex; flex-direction:column; overflow:hidden; }
+.header-capa { text-align:center; font-size:18pt; font-weight:bold; text-transform:uppercase; letter-spacing:1px; line-height:1.6; margin-bottom:30px; flex-shrink:0; font-family:'Arial',sans-serif; color:#000; }
+.linha-topo { display:flex; justify-content:space-between; align-items:flex-start; font-size:22pt; font-weight:bold; text-transform:uppercase; margin-top:25px; margin-bottom:35px; padding:0 5px; flex-shrink:0; font-family:'Arial',sans-serif; color:#000; }
+.bloco-dados { display:flex; flex-direction:column; gap:18px; font-size:16pt; font-weight:bold; text-transform:uppercase; padding:0 5px; flex-shrink:0; font-family:'Arial',sans-serif; color:#000; }
+.bloco-dados div { word-wrap:break-word; overflow-wrap:break-word; line-height:1.3; }
+.bloco-assunto { flex:1; display:flex; align-items:center; justify-content:center; text-align:center; font-size:16pt; font-weight:bold; text-transform:uppercase; padding:15px 10px; word-wrap:break-word; overflow-wrap:break-word; font-family:'Arial',sans-serif; color:#000; }
+.bloco-inferior { display:flex; justify-content:flex-end; font-size:13pt; font-weight:bold; text-transform:uppercase; line-height:1.8; padding:0 5px; flex-shrink:0; font-family:'Arial',sans-serif; color:#000; }
+.bloco-inferior div { text-align:right; word-wrap:break-word; overflow-wrap:break-word; }
+.btn-imprimir-capa { display:block; margin:24px auto 10px auto; padding:14px 36px; font-size:15px; background:linear-gradient(135deg,#1a3a6b 0%,#0f2557 100%); color:#fff; border:none; border-radius:var(--radius-md); cursor:pointer; font-weight:bold; transition:all .3s; letter-spacing:.5px; box-shadow:0 4px 12px rgba(26,58,107,.3); }
+.btn-imprimir-capa:hover { background:linear-gradient(135deg,#2a5a9b 0%,#1a3a6b 100%); transform:translateY(-2px); box-shadow:0 8px 24px rgba(26,58,107,.4); }
+@media print {
+  body * { visibility:hidden !important; }
+  #modal-imprimir-capa.active, #modal-imprimir-capa.active * { visibility:visible !important; }
+  #modal-imprimir-capa.active { position:fixed !important; left:0 !important; top:0 !important; width:100% !important; height:100% !important; background:#fff !important; display:flex !important; align-items:center !important; justify-content:center !important; z-index:9999 !important; }
+  #modal-imprimir-capa.active .capa-impressao { border:2px solid #000 !important; width:210mm !important; height:297mm !important; margin:0 auto !important; padding:25mm 20mm 20mm 20mm !important; }
+  .btn-imprimir-capa, .btn-fechar-capa-modal { display:none !important; }
+}
+::-webkit-scrollbar { width:10px; height:10px; }
+::-webkit-scrollbar-track { background:var(--surface-2); border-radius:5px; }
+::-webkit-scrollbar-thumb { background:var(--border-strong); border-radius:5px; border:2px solid var(--surface-2); }
+::-webkit-scrollbar-thumb:hover { background:var(--text-muted); }
+.mode-badge { font-size:10px; padding:3px 8px; border-radius:6px; font-weight:700; letter-spacing:.5px; }
+.mode-local { background:#fef3c7; color:#78350f; border:1px solid #fcd34d; }
+.mode-server { background:#d1fae5; color:#065f46; border:1px solid #6ee7b7; }
+.alert-box { padding:12px 16px; border-radius:var(--radius-md); font-size:12.5px; margin-bottom:14px; display:flex; align-items:flex-start; gap:10px; }
+.alert-info { background:#eff6ff; border:1px solid #bfdbfe; color:#1e40af; }
+.alert-warn { background:#fffbeb; border:1px solid #fde68a; color:#92400e; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-title">
+    <div class="logo-box">CT</div>
+    <div>
+      <h1>CONSELHO TUTELAR — UNIDADE PARANOÁ</h1>
+      <span class="subtitle">Arquivo Ativo</span>
+    </div>
+  </div>
+  <div class="header-stats">
+    <span class="stat-badge" id="stat-badge-modo" title="Modo de armazenamento">LOCAL</span>
+    <span class="stat-badge" id="stat-badge-pastas">0 REGISTROS</span>
+    <span class="stat-badge" id="stat-badge-atendimentos">0 ATENDIMENTOS</span>
+    <span class="stat-badge" id="stat-badge-lixeira" style="background:rgba(220,38,38,.2); border-color:rgba(220,38,38,.3);">0 NA LIXEIRA</span>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" onclick="switchTab('processos', event)">Processos</button>
+  <button class="tab-btn" onclick="switchTab('atendimentos', event)">Atendimentos</button>
+  <button class="tab-btn" onclick="switchTab('lixeira', event)">Lixeira</button>
+  <button class="tab-btn" onclick="switchTab('painel', event)">Painel</button>
+  <button class="tab-btn" onclick="switchTab('configuracoes', event)">Configurações</button>
+</nav>
+
+<main>
+  <!-- ============ PROCESSOS ============ -->
+  <div id="processos" class="tab-content active">
+    <div class="card">
+      <div class="card-title">
+        <span id="titulo-form-processo">Novo Cadastro de Processo</span>
+        <button type="button" id="btn-cancelar-edicao" class="btn btn-secondary" style="display:none; font-size:10px; padding:4px 8px;" onclick="cancelarEdicao()">Cancelar Edição</button>
+      </div>
+      <form id="form-processo" onsubmit="salvarProcesso(event)">
+        <input type="hidden" id="proc-edit-id" value="">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="proc-pasta">1. Pasta (Automática ou Editável)</label>
+            <div style="display:flex; gap:6px;">
+              <input type="text" id="proc-pasta" required placeholder="Ex: A-1, I-1, Y-5..." style="flex:1;">
+              <button type="button" class="btn btn-secondary" onclick="atualizarPastaAutomaticamente(true)">Recalcular</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="proc-num">2. Nº Processo (Ex: 51/23)</label>
+            <input type="text" id="proc-num" placeholder="Ex: 51/23">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:14px;">
+          <label>3 & 4. Criança / Adolescente e Data de Nascimento</label>
+          <div id="lista-criancas">
+            <div class="crianca-row">
+              <input type="text" placeholder="Nome Completo da Criança / Adolescente" class="c-nome" required style="flex:2;"
+                     oninput="if(!document.getElementById('proc-edit-id').value) atualizarPastaAutomaticamente()"
+                     onblur="verificarCriancaExistente(this)"
+                     onclick="gerarPastaAoClicarCrianca(this)">
+              <input type="date" placeholder="Data Nasc." class="c-nasc" style="flex:1;">
+              <button type="button" class="btn btn-danger" onclick="removerLinhaCrianca(this)" style="padding:9px 12px;">×</button>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary" onclick="adicionarLinhaCrianca()" style="margin-top:6px; width:max-content; font-size:11px;">+ Adicionar Criança</button>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group" style="grid-column:span 2;">
+            <label for="proc-responsavel">5. Responsável</label>
+            <input type="text" id="proc-responsavel" required placeholder="Nome completo do responsável">
+          </div>
+          <div class="form-group">
+            <label for="proc-endereco">6. Endereço</label>
+            <input type="text" id="proc-endereco" placeholder="Ex: Quadra 02, Conjunto A..." required>
+          </div>
+          <div class="form-group">
+            <label for="proc-localidade">7. Localidade</label>
+            <input type="text" id="proc-localidade" placeholder="Ex: Paranoá, Itapoã..." required>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="proc-assunto">8. Assunto</label>
+            <select id="proc-assunto" required onchange="toggleAssuntoOutro(this, 'proc-assunto-outro')">
+              <option value="">Selecione</option>
+            </select>
+            <input type="text" id="proc-assunto-outro" placeholder="Digite o assunto personalizado..." style="display:none; margin-top:6px;">
+          </div>
+          <div class="form-group">
+            <label for="proc-conselheiro">9. Conselheiro / Atendente</label>
+            <select id="proc-conselheiro" required><option value="">Selecione</option></select>
+          </div>
+          <div class="form-group">
+            <label for="proc-sei">10. SEI</label>
+            <input type="text" id="proc-sei" placeholder="Nº do Processo SEI">
+          </div>
+          <div class="form-group">
+            <label for="proc-obs">11. Observações</label>
+            <input type="text" id="proc-obs" placeholder="Observações gerais...">
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary" onclick="cancelarEdicao()">Limpar</button>
+          <button type="submit" id="btn-salvar-processo" class="btn">Cadastrar Processo</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="display:flex; justify-content:space-between; align-items:center;">
+        <span>Lista de Processos Ativos (17 por página)</span>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-success" onclick="abrirModalImportar()" style="font-size:11px; padding:6px 12px;">📥 Importar do Excel</button>
+          <button class="btn btn-secondary" onclick="exportarCSV()" style="font-size:11px; padding:6px 12px;">📊 Exportar CSV</button>
+          <button class="btn btn-danger" onclick="solicitarApagarTudo()" style="font-size:11px; padding:6px 12px;">🗑️ Apagar Tudo</button>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="filtro-processo" placeholder="Buscar por pasta, processo, criança, responsável, endereço, localidade, assunto, SEI ou observações..." onkeyup="paginaAtual = 1; renderizarProcessos();">
+        <button class="btn btn-secondary" onclick="paginaAtual = 1; renderizarProcessos();">Pesquisar</button>
+      </div>
+
+      <div class="barra-letras">
+        <span class="barra-letras-label">Filtrar por letra:</span>
+        <button type="button" class="btn-letra btn-letra-todas ativo" data-letra="" onclick="filtrarPorLetra('', this)">TODAS</button>
+        <button type="button" class="btn-letra" data-letra="A" onclick="filtrarPorLetra('A', this)">A<span class="contador" data-contador="A">0</span></button>
+        <button type="button" class="btn-letra" data-letra="B" onclick="filtrarPorLetra('B', this)">B<span class="contador" data-contador="B">0</span></button>
+        <button type="button" class="btn-letra" data-letra="C" onclick="filtrarPorLetra('C', this)">C<span class="contador" data-contador="C">0</span></button>
+        <button type="button" class="btn-letra" data-letra="D" onclick="filtrarPorLetra('D', this)">D<span class="contador" data-contador="D">0</span></button>
+        <button type="button" class="btn-letra" data-letra="E" onclick="filtrarPorLetra('E', this)">E<span class="contador" data-contador="E">0</span></button>
+        <button type="button" class="btn-letra" data-letra="F" onclick="filtrarPorLetra('F', this)">F<span class="contador" data-contador="F">0</span></button>
+        <button type="button" class="btn-letra" data-letra="G" onclick="filtrarPorLetra('G', this)">G<span class="contador" data-contador="G">0</span></button>
+        <button type="button" class="btn-letra" data-letra="H" onclick="filtrarPorLetra('H', this)">H<span class="contador" data-contador="H">0</span></button>
+        <button type="button" class="btn-letra btn-letra-iy" data-letra="I" onclick="filtrarPorLetra('I', this)" title="I e Y juntos">I·Y<span class="contador" data-contador="I">0</span></button>
+        <button type="button" class="btn-letra" data-letra="J" onclick="filtrarPorLetra('J', this)">J<span class="contador" data-contador="J">0</span></button>
+        <button type="button" class="btn-letra" data-letra="K" onclick="filtrarPorLetra('K', this)">K<span class="contador" data-contador="K">0</span></button>
+        <button type="button" class="btn-letra" data-letra="L" onclick="filtrarPorLetra('L', this)">L<span class="contador" data-contador="L">0</span></button>
+        <button type="button" class="btn-letra" data-letra="M" onclick="filtrarPorLetra('M', this)">M<span class="contador" data-contador="M">0</span></button>
+        <button type="button" class="btn-letra" data-letra="N" onclick="filtrarPorLetra('N', this)">N<span class="contador" data-contador="N">0</span></button>
+        <button type="button" class="btn-letra" data-letra="O" onclick="filtrarPorLetra('O', this)">O<span class="contador" data-contador="O">0</span></button>
+        <button type="button" class="btn-letra" data-letra="P" onclick="filtrarPorLetra('P', this)">P<span class="contador" data-contador="P">0</span></button>
+        <button type="button" class="btn-letra" data-letra="Q" onclick="filtrarPorLetra('Q', this)">Q<span class="contador" data-contador="Q">0</span></button>
+        <button type="button" class="btn-letra" data-letra="R" onclick="filtrarPorLetra('R', this)">R<span class="contador" data-contador="R">0</span></button>
+        <button type="button" class="btn-letra" data-letra="S" onclick="filtrarPorLetra('S', this)">S<span class="contador" data-contador="S">0</span></button>
+        <button type="button" class="btn-letra" data-letra="T" onclick="filtrarPorLetra('T', this)">T<span class="contador" data-contador="T">0</span></button>
+        <button type="button" class="btn-letra" data-letra="U" onclick="filtrarPorLetra('U', this)">U<span class="contador" data-contador="U">0</span></button>
+        <button type="button" class="btn-letra" data-letra="V" onclick="filtrarPorLetra('V', this)">V<span class="contador" data-contador="V">0</span></button>
+        <button type="button" class="btn-letra" data-letra="W" onclick="filtrarPorLetra('W', this)">W<span class="contador" data-contador="W">0</span></button>
+        <button type="button" class="btn-letra" data-letra="X" onclick="filtrarPorLetra('X', this)">X<span class="contador" data-contador="X">0</span></button>
+        <button type="button" class="btn-letra" data-letra="Z" onclick="filtrarPorLetra('Z', this)">Z<span class="contador" data-contador="Z">0</span></button>
+        <span class="barra-letras-resultado" id="barra-letras-resultado"></span>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th width="40"></th>
+            <th>Pasta</th>
+            <th>Nº Processo</th>
+            <th>Criança / Adolescente</th>
+            <th>Nasc.</th>
+            <th>Responsável</th>
+            <th>Endereço</th>
+            <th>Localidade</th>
+            <th>Assunto</th>
+            <th>Conselheiro</th>
+            <th>SEI</th>
+            <th>Observações</th>
+            <th width="210">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-processos">
+          <tr><td colspan="13" class="empty-state">Nenhum processo encontrado.</td></tr>
+        </tbody>
+      </table>
+      <div class="pagination-container" id="paginacao-processos"></div>
+    </div>
+  </div>
+
+  <!-- ============ ATENDIMENTOS ============ -->
+  <div id="atendimentos" class="tab-content">
+    <div class="card">
+      <div class="card-title">Registro de Atendimento</div>
+      <form id="form-atendimento" onsubmit="salvarAtendimento(event)">
+        <div class="form-grid">
+          <div class="form-group" style="grid-column:span 2;">
+            <label for="aten-nome">Nome do Atendido</label>
+            <input type="text" id="aten-nome" required placeholder="Nome completo">
+          </div>
+          <div class="form-group">
+            <label for="aten-cidade">Cidade / Localidade</label>
+            <input type="text" id="aten-cidade" required placeholder="Ex: Paranoá">
+          </div>
+          <div class="form-group">
+            <label for="aten-assunto">Assunto</label>
+            <select id="aten-assunto" required onchange="toggleAssuntoOutro(this, 'aten-assunto-outro')">
+              <option value="">Selecione</option>
+            </select>
+            <input type="text" id="aten-assunto-outro" placeholder="Digite o assunto personalizado..." style="display:none; margin-top:6px;">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="aten-conselheiro">Administrativo / Atendente</label>
+            <select id="aten-conselheiro" required><option value="">Selecione</option></select>
+          </div>
+          <div class="form-group">
+            <label for="aten-datahora">Data e Hora</label>
+            <input type="datetime-local" id="aten-datahora" required>
+          </div>
+          <div class="form-group" style="grid-column:span 2;">
+            <label for="aten-observacao">Resumo / Observações</label>
+            <textarea id="aten-observacao" rows="2" placeholder="Detalhes do atendimento..."></textarea>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary" onclick="limparFormularioAtendimento()">Limpar</button>
+          <button type="submit" class="btn">Registrar Atendimento</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Atendimentos Registrados</div>
+      <div class="search-bar">
+        <input type="text" id="filtro-atendimento" placeholder="Buscar atendimento..." onkeyup="renderizarAtendimentos()">
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Data / Hora</th>
+            <th>Nome</th>
+            <th>Cidade / Localidade</th>
+            <th>Assunto</th>
+            <th>Administrativo</th>
+            <th>Observação</th>
+            <th width="70">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-atendimentos">
+          <tr><td colspan="7" class="empty-state">Nenhum atendimento registado.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============ LIXEIRA ============ -->
+  <div id="lixeira" class="tab-content">
+    <div class="card">
+      <div class="card-title" style="display:flex; justify-content:space-between; align-items:center;">
+        <span>Processos Excluídos</span>
+        <button class="btn btn-danger" onclick="esvaziarLixeira()" style="font-size:11px; padding:6px 12px;">🗑️ Esvaziar Lixeira</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Pasta</th>
+            <th>Nº Processo</th>
+            <th>Criança / Adolescente</th>
+            <th>Responsável</th>
+            <th>Assunto</th>
+            <th>Conselheiro</th>
+            <th width="200">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-lixeira">
+          <tr><td colspan="7" class="empty-state">A lixeira está vazia.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============ PAINEL ============ -->
+  <div id="painel" class="tab-content">
+    <div class="card">
+      <div class="card-title">Indicadores Gerais</div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:24px;">
+        <div style="background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%); padding:20px; border-radius:var(--radius-md); text-align:center; border:1px solid #bfdbfe;">
+          <span style="font-size:11px; font-weight:700; color:var(--primary-600); letter-spacing:.5px;">PROCESSOS ATIVOS</span>
+          <h2 id="p-proc-tot" style="margin:10px 0 0 0; font-size:34px; color:var(--accent); font-weight:800;">0</h2>
+        </div>
+        <div style="background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%); padding:20px; border-radius:var(--radius-md); text-align:center; border:1px solid #bbf7d0;">
+          <span style="font-size:11px; font-weight:700; color:var(--primary-600); letter-spacing:.5px;">ATENDIMENTOS</span>
+          <h2 id="p-aten-tot" style="margin:10px 0 0 0; font-size:34px; color:var(--success); font-weight:800;">0</h2>
+        </div>
+        <div style="background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%); padding:20px; border-radius:var(--radius-md); text-align:center; border:1px solid #fde68a;">
+          <span style="font-size:11px; font-weight:700; color:var(--primary-600); letter-spacing:.5px;">HISTÓRICO DA FAMÍLIA</span>
+          <h2 id="p-hist-tot" style="margin:10px 0 0 0; font-size:34px; color:var(--warning); font-weight:800;">0</h2>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <div class="card" style="margin-bottom:0;">
+        <div class="card-title">Por Assunto</div>
+        <div style="max-height:350px; overflow-y:auto;">
+          <table>
+            <thead><tr><th>Assunto</th><th width="80" style="text-align:center;">Qtd</th></tr></thead>
+            <tbody id="dash-tabela-assuntos"><tr><td colspan="2" class="empty-state">Sem dados.</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:0;">
+        <div class="card-title">Por Localidade</div>
+        <div style="max-height:350px; overflow-y:auto;">
+          <table>
+            <thead><tr><th>Localidade</th><th width="80" style="text-align:center;">Qtd</th></tr></thead>
+            <tbody id="dash-tabela-cidades"><tr><td colspan="2" class="empty-state">Sem dados.</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:24px;">
+      <div class="card" style="margin-bottom:0;">
+        <div class="card-title">Por Ano</div>
+        <div style="max-height:250px; overflow-y:auto;">
+          <table><thead><tr><th>Ano</th><th width="70" style="text-align:center;">Qtd</th></tr></thead>
+            <tbody id="dash-tabela-anos"><tr><td colspan="2" class="empty-state">Sem dados.</td></tr></tbody></table>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:0;">
+        <div class="card-title">Por Mês</div>
+        <div style="max-height:250px; overflow-y:auto;">
+          <table><thead><tr><th>Mês</th><th width="70" style="text-align:center;">Qtd</th></tr></thead>
+            <tbody id="dash-tabela-meses"><tr><td colspan="2" class="empty-state">Sem dados.</td></tr></tbody></table>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:0;">
+        <div class="card-title">Por Dia</div>
+        <div style="max-height:250px; overflow-y:auto;">
+          <table><thead><tr><th>Data</th><th width="70" style="text-align:center;">Qtd</th></tr></thead>
+            <tbody id="dash-tabela-dias"><tr><td colspan="2" class="empty-state">Sem dados.</td></tr></tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CONFIGURAÇÕES ============ -->
+  <div id="configuracoes" class="tab-content">
+    <div class="card">
+      <div class="card-title">Backup e Restauração</div>
+      <div class="alert-box alert-info">
+        <span>💡</span>
+        <div>
+          <strong>Faça backup regularmente.</strong> Exporte o arquivo JSON para guardar uma cópia segura de todos os dados.
+          Se algo acontecer com o navegador, restaure o backup a qualquer momento.
+        </div>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <button class="btn btn-success" onclick="exportarBackupJSON()">💾 Exportar Backup Completo (JSON)</button>
+        <button class="btn btn-warning" onclick="document.getElementById('input-restaurar').click()">📂 Restaurar Backup</button>
+        <input type="file" id="input-restaurar" accept=".json" style="display:none;" onchange="restaurarBackupJSON(event)">
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Conselheiros Tutelares e Equipe Oficial</div>
+      <div style="display:flex; gap:12px; margin-bottom:16px;">
+        <input type="text" id="novo-membro" placeholder="Nome do Conselheiro / Membro" style="flex:1;">
+        <button type="button" class="btn" onclick="adicionarMembroEquipe()">Adicionar</button>
+      </div>
+      <table>
+        <thead><tr><th>Nome</th><th width="180">Ações</th></tr></thead>
+        <tbody id="tabela-equipe"></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Zona de Perigo</div>
+      <div class="alert-box alert-warn">
+        <span>⚠️</span>
+        <div>
+          <strong>Atenção:</strong> as ações abaixo são irreversíveis. Faça backup antes de prosseguir.
+        </div>
+      </div>
+      <button class="btn btn-danger" onclick="resetarTudo()">🗑️ Apagar TUDO (dados + equipe + atendimentos)</button>
+    </div>
+  </div>
+</main>
+
+<!-- ============ MODAL HISTÓRICO ============ -->
+<div id="modal-historico" class="modal">
+  <div class="modal-card" style="width:800px;">
+    <div class="card-title" style="margin-bottom:10px;">
+      <span id="titulo-modal-historico">Histórico de Serviços da Família</span>
+      <button type="button" class="btn btn-secondary" onclick="fecharModalHistorico()" style="padding:2px 8px; font-size:10px;">✕ Fechar</button>
+    </div>
+    <div style="background:var(--surface-2); padding:12px; border-radius:var(--radius-sm); margin-bottom:16px; font-size:12.5px; border:1px solid var(--border);">
+      <strong>Pasta:</strong> <span id="hist-info-pasta">---</span> |
+      <strong>Responsável:</strong> <span id="hist-info-responsavel">---</span>
+    </div>
+
+    <form id="form-add-historico" onsubmit="adicionarServicoHistorico(event)" style="background:#fff; padding:16px; border:1px solid var(--border); border-radius:var(--radius-md); margin-bottom:18px;">
+      <input type="hidden" id="hist-proc-id">
+      <div class="form-grid" style="margin-bottom:12px;">
+        <div class="form-group">
+          <label for="hist-data">Data do Serviço</label>
+          <input type="date" id="hist-data" required>
+        </div>
+        <div class="form-group">
+          <label for="hist-conselheiro">Conselheiro / Atendente</label>
+          <select id="hist-conselheiro" required><option value="">Selecione</option></select>
+        </div>
+        <div class="form-group">
+          <label for="hist-assunto">Assunto</label>
+          <select id="hist-assunto" required onchange="toggleAssuntoOutro(this, 'hist-assunto-outro')">
+            <option value="">Selecione</option>
+          </select>
+          <input type="text" id="hist-assunto-outro" placeholder="Digite o assunto personalizado..." style="display:none; margin-top:6px;">
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:12px;">
+        <label for="hist-servico">Serviço Ofertado / Ação Realizada</label>
+        <textarea id="hist-servico" rows="2" required placeholder="Descreva o serviço ofertado para esta família..."></textarea>
+      </div>
+      <div style="display:flex; justify-content:flex-end;">
+        <button type="submit" class="btn btn-success" style="font-size:11px; padding:6px 14px;">+ Adicionar Serviço</button>
+      </div>
+    </form>
+
+    <table style="font-size:11px;">
+      <thead>
+        <tr>
+          <th width="90">Data</th>
+          <th width="120">Conselheiro</th>
+          <th>Assunto</th>
+          <th>Serviço Ofertado</th>
+          <th width="60">Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-historico-familia">
+        <tr><td colspan="5" class="empty-state">Nenhum serviço registrado no histórico desta família.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============ MODAL CAPA ============ -->
+<div id="modal-imprimir-capa" class="modal">
+  <div class="modal-capa-content">
+    <div style="width:100%; display:flex; justify-content:flex-end; margin-bottom:5px;">
+      <button type="button" class="btn btn-secondary btn-fechar-capa-modal" onclick="fecharModalCapa()" style="padding:4px 10px; font-size:11px;">✕ Fechar</button>
+    </div>
+    <div class="capa-impressao">
+      <div class="header-capa">
+        <span class="linha1">CONSELHO TUTELAR DO PARANOÁ</span><br>
+        <span class="linha2">ARQUIVO ATIVO</span>
+      </div>
+      <div class="linha-topo">
+        <span id="capa-pasta">---</span>
+        <span>PROCESSO: <span id="capa-num-processo">---</span></span>
+      </div>
+      <div class="bloco-dados">
+        <div>CRIANÇA/ADOLESCENTE: <span id="capa-crianca">---</span></div>
+        <div>RESPONSÁVEL: <span id="capa-responsavel">---</span></div>
+        <div>ENDEREÇO/LOCALIDADE: <span id="capa-endereco-localidade">---</span></div>
+      </div>
+      <div class="bloco-assunto">
+        ASSUNTO: <span id="capa-assunto">---</span>
+      </div>
+      <div class="bloco-inferior">
+        <div>
+          CONSELHEIRO(A): <span id="capa-conselheiro">---</span><br>
+          SEI: <span id="capa-sei">---</span>
+        </div>
+      </div>
+    </div>
+    <button class="btn-imprimir-capa" onclick="window.print()">🖨️ IMPRIMIR CAPA (A4)</button>
+  </div>
+</div>
+
+<!-- ============ MODAL IMPORTAR ============ -->
+<div id="modal-importar" class="modal">
+  <div class="modal-card">
+    <div class="card-title" style="margin-bottom:10px;">
+      <span>Importação em Lote via Excel</span>
+      <button type="button" class="btn btn-danger" onclick="fecharModalImportar()" style="padding:2px 8px; font-size:10px;">X</button>
+    </div>
+    <p style="font-size:12.5px; color:var(--text-muted); line-height:1.6;">
+      Cole as linhas copiadas do Excel:<br>
+      <b>1. Pasta | 2. Nº Processo | 3. Criança/Adolescente | 4. Nasc. | 5. Responsável | 6. Endereço | 7. Localidade | 8. Assunto | 9. Conselheiro | 10. SEI | 11. Observações</b><br>
+      <em style="color:var(--accent); font-weight:600;">📌 As pastas são cadastradas na sequência exata da planilha, respeitando pulos. Se a coluna Pasta vier vazia, o sistema calcula automaticamente.</em>
+    </p>
+    <textarea id="texto-excel" rows="8" placeholder="Cole os dados copiados do Excel aqui..." style="width:100%; box-sizing:border-box; margin-bottom:16px; font-family:'JetBrains Mono',monospace; font-size:11px;"></textarea>
+    <div style="display:flex; justify-content:flex-end; gap:10px;">
+      <button type="button" class="btn btn-secondary" onclick="fecharModalImportar()">Cancelar</button>
+      <button type="button" class="btn btn-success" onclick="processarImportacaoExcel()">Processar e Importar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   CONFIGURAÇÃO DE MODO
+   ----------------------------------------------------------------
+   USE_SERVER = false  ->  usa localStorage (modo offline / HTML puro)
+   USE_SERVER = true   ->  usa api.php via fetch (XAMPP / hospedagem)
+   ================================================================ */
+const USE_SERVER = false;
+const API_URL = 'api.php';
+
+const ASSUNTOS_PADRAO = [
+  "Negligência: Abandono de Incapaz","Negligência: Abandono Intelectual","Negligência: Abandono Material","Negligência: Atividade doméstica","Negligência: Atos atentórios ao Exercício da cidadania","Negligência: Certidão de Nascimento","Negligência: Certidão de óbito","Negligência: Cultura / Esporte / Lazer","Negligência: Educação","Negligência: Evasão Escolar","Negligência: Fuga do Lar","Negligência: Negação do Direito á liberdade e á expressão","Negligência: em Alimentação","Negligência: Negligência em Amparo e Responsabilização","Negligência: em Assistência à saúde","Negligência: Privação ou Dificuldade de Convívio / Conflito Familiar","Negligência: Necessidades Especiais","Negligência: Não cumprimento de decisão judicial Transitada em Julgada","Negligência: Restrição ao direito de Ir e Vir","Negligência: Violações à Dignidade e ao Respeito","Negligência: Veículo / trânsito","Negligência: Saúde","Violência Psicológica: Alienação Parental","Violência Psicológica: Ameaça","Violência Psicológica: Calúnia","Violência Psicológica: Chantagem","Violência Psicológica: Difamação","Violência Psicológica: Humilhação","Violência Psicológica: Injúria","Violência Psicológica: Violência Doméstica no âmbito Familiar","Violência Física: Homicídio","Violência Física: Indução ao Suicídio","Violência Física: Lesão Corporal","Violência Física: Maus Tratos","Violência Física: Tentativa de Homicídio","Violência Sexual: Abuso Sexual","Violência Sexual: Estupro","Violência Sexual: Estupro de Vulnerável","Violência Sexual: Exploração Sexual","Violência Institucional: Abuso de autoridade","Violência Institucional: Ausência de programas e ações específicas para aplicação de medidas de proteção","Violência Institucional: Assédio Moral","Violência Institucional: Assédio Sexual","Violência Institucional: Atos atentórios ao direito de Educação","Violência Institucional: Atos atentórios ao exercício de cidadania","Violência Institucional: Assistência Social-Regularização Cadastro","Violência Institucional: Assistência Social-Inclusão em Projetos Sociais","Violência Institucional: Encaminham.à Gerência de Meio Aberto- Proc. existente de Medida Sócioeducativa","Violência Institucional: Encaminham.ao P. Judic. Regularização de guarda/visita ou com Trânsito em Julgado","Violência Institucional: Falta de condições educacionais adequadas","Violência Institucional: Impedimento de Permanência no Sistema Escolar","Violência Institucional: Indisponibilidade de acesso a Cultura, Esporte e Lazer","Violência Institucional: Indisponibilidade de acesso ao Ensino Fundamental ( 6 a 14 anos)","Violência Institucional: Indisponibilidade de acesso ao Ensino Médio (15 a 17 anos)","Violência Institucional: Indisponib./ Não acesso á Capacitação /Formação/Técnico/Profissional do aprendiz","Violência Institucional: Indisponibilidade de vaga em Creche e Pré-Escola às crianças de 0 a 5 anos de idade","Violência Institucional: Inexistência/ Impedimento de uso / Indisponibilidade de Transporte","Violência Institucional: Inexistência/ Impedimento de uso de Equipamento para Cultura, Esporte e Lazer","Violência Institucional: Não atendimento em saúde","Violência Institucional: Omissão","Violência Institucional: Requisição de Certidão de Nascimento","Violência Institucional: Requisição de Certidão de Óbito","Violência Institucional: Medida de Proteção /Requisição de Ser viço Público área de segurança","Violência Institucional: Medida de Proteção /Requisição de Serviço Público Previdência e trabalho","Violência Institucional: Medida de Proteção /Requisição de Serviço Público Psicológico","Violência Institucional: Medida de Proteção /Requisição de Serviço Público Psiquiátrico","Violência Institucional: Necessidades Especiais","Violência Institucional: Negação do Direito à liberdade e Expressão","Violência Institucional: Tortura, Tratamento Cruel e Degradante","Violência Institucional: Violência Policial","Trabalho Infantil: Âmbito Doméstico","Trabalho Infantil: Âmbito Rural","Trabalho Infantil: Atividades Informais","Trabalho Infantil: Condições Impróprias de remuneração ou Imposição de trabalo ao Adolescente","Trabalho Infantil: Condições Irregulares de Trabalho","Trabalho Infantil: Exploração Sexual","Trabalho Infantil: Inexistência ou Insuficiência de Condições para Formação Técnica e profissional","Trabalho Infantil: Submissão de Crianças/adolescentes à atividade Ilícita ou Contravenções Sociais","Discriminação - Por Compleição Física","Discriminação - Por Crença Religiosa","Discriminação - Por Deficiência","Discriminação - Por Identidade de Gênero","Discriminação - Por Orientação Sexual","Discriminação - Racial","Violência Online - Aliciamento Sexual Infantil Online","Violência Online - Apologia e Incitação à Crimes","Violência Online - Calúnia/ Difamação / Injúria","Violência Online - Cyberbullying","Violência Online - Pornografia","Violência Online – Racismo","Autoagressão - Automutilação","Autoagressão - Suicídio","Autoagressão - Tentativa de Suicídio","Tráfico de Pessoas - Para Fins de Adoção Ilegal","Tráfico de Pessoas - Para Fins de Exploração Sexual","Tráfico de Pessoas - Para Fins de Remoção de Órgãos","Tráfico de Pessoas - Para Fins de Trabalho Infantil","OUTRO"
+];
+
+const CONSELHEIROS_INICIAIS = ["CLÁUDIA VASCONCELOS","LUCINEA FERNANDES","NADELÇO GONÇALVES","SAMARA BRITO","SANDRA FREIRE","NÃO INFORMADO"];
+const ADMINISTRATIVOS_INICIAIS = ["IDNEY MAX","SHEILA AGUIAR","KAMYLLE PRISCILA","RAQUEL FIOR"];
+
+let dadosApp = { processos:[], lixeira:[], atendimentos:[], equipe:[], administrativos:[] };
+let paginaAtual = 1;
+const itensPorPagina = 17;
+let filtroLetra = '';
+
+/* ============ HELPERS DE DATA (evita problema de fuso UTC) ============ */
+function hojeLocal() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${dd}`;
+}
+function agoraLocal() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  const hh = String(d.getHours()).padStart(2, '0');
+  const mi = String(d.getMinutes()).padStart(2, '0');
+  return `${y}-${m}-${dd}T${hh}:${mi}`;
+}
+
+/* ============ CAMADA DE PERSISTÊNCIA (dual) ============ */
+async function apiGet(action) {
+  const r = await fetch(`${API_URL}?action=${action}&_=${Date.now()}`);
+  return await r.json();
+}
+async function apiPost(action, payload) {
+  const r = await fetch(`${API_URL}?action=${action}`, {
+    method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload || {})
+  });
+  return await r.json();
+}
+
+async function carregarDados() {
+  if (USE_SERVER) {
+    const r = await apiGet('load');
+    if (r && r.ok && r.dados) dadosApp = r.dados;
+    else throw new Error('Resposta inválida do servidor');
+  } else {
+    dadosApp.processos      = JSON.parse(localStorage.getItem('ct_processos'))      || [];
+    dadosApp.lixeira        = JSON.parse(localStorage.getItem('ct_lixeira'))        || [];
+    dadosApp.atendimentos   = JSON.parse(localStorage.getItem('ct_atendimentos'))   || [];
+    dadosApp.equipe         = JSON.parse(localStorage.getItem('ct_equipe'))         || CONSELHEIROS_INICIAIS.slice();
+    dadosApp.administrativos= JSON.parse(localStorage.getItem('ct_administrativos'))|| ADMINISTRATIVOS_INICIAIS.slice();
+  }
+  if (!Array.isArray(dadosApp.processos))      dadosApp.processos = [];
+  if (!Array.isArray(dadosApp.lixeira))        dadosApp.lixeira = [];
+  if (!Array.isArray(dadosApp.atendimentos))   dadosApp.atendimentos = [];
+  if (!Array.isArray(dadosApp.equipe))         dadosApp.equipe = CONSELHEIROS_INICIAIS.slice();
+  if (!Array.isArray(dadosApp.administrativos))dadosApp.administrativos = ADMINISTRATIVOS_INICIAIS.slice();
+}
+
+function salvarLocal() {
+  localStorage.setItem('ct_processos', JSON.stringify(dadosApp.processos));
+  localStorage.setItem('ct_lixeira', JSON.stringify(dadosApp.lixeira));
+  localStorage.setItem('ct_atendimentos', JSON.stringify(dadosApp.atendimentos));
+  localStorage.setItem('ct_equipe', JSON.stringify(dadosApp.equipe));
+  localStorage.setItem('ct_administrativos', JSON.stringify(dadosApp.administrativos));
+}
+
+async function persistir() {
+  if (USE_SERVER) return;
+  salvarLocal();
+}
+
+/* ============ HELPERS ============ */
+function letraNormalizadaParaFiltro(l){ if(!l) return ''; const x = String(l).toUpperCase(); return x === 'Y' ? 'I' : x; }
+function extrairLetraInicialPasta(pasta){
+  if (pasta == null) return '';
+  let s = String(pasta).trim(); if (!s) return '';
+  s = s.normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  const p = s.charAt(0).toUpperCase();
+  return /^[A-Z]$/.test(p) ? p : '';
+}
+function letraDoNome(nome){
+  if (!nome || !nome.trim()) return 'A';
+  let l = nome.trim().charAt(0).toUpperCase();
+  l = l.normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  return /^[A-Z]$/.test(l) ? l : 'A';
+}
+function escapeHtml(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function escapeAttr(s){ return String(s == null ? '' : s).replace(/\\/g,'\\\\').replace(/'/g,"\\'"); }
+
+function switchTab(tabId, ev){
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  if (ev) ev.currentTarget.classList.add('active');
+  atualizarEstatisticasCabecalho();
+  if (tabId === 'painel') atualizarDashboard();
+}
+function inicializarDatas(){
+  const ag = agoraLocal();
+  if (document.getElementById('aten-datahora')) document.getElementById('aten-datahora').value = ag;
+  const hj = hojeLocal();
+  if (document.getElementById('hist-data')) document.getElementById('hist-data').value = hj;
+}
+function popularSelects(){
+  const sA = [document.getElementById('proc-assunto'), document.getElementById('aten-assunto'), document.getElementById('hist-assunto')];
+  const sC = [document.getElementById('proc-conselheiro'), document.getElementById('hist-conselheiro')];
+  const sAd = document.getElementById('aten-conselheiro');
+  sA.forEach(sel => { if(!sel) return; const v = sel.value; sel.innerHTML = '<option value="">Selecione</option>'; ASSUNTOS_PADRAO.forEach(a => sel.innerHTML += `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`); sel.value = v; });
+  sC.forEach(sel => { if(!sel) return; const v = sel.value; sel.innerHTML = '<option value="">Selecione</option>'; dadosApp.equipe.forEach(m => sel.innerHTML += `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`); sel.value = v; });
+  if (sAd) { const v = sAd.value; sAd.innerHTML = '<option value="">Selecione</option>'; dadosApp.administrativos.forEach(m => sAd.innerHTML += `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`); sAd.value = v; }
+  renderizarTabelaEquipe();
+}
+function toggleAssuntoOutro(sel, id){
+  const i = document.getElementById(id); if(!i) return;
+  if (sel.value === 'OUTRO') { i.style.display = 'block'; i.focus(); }
+  else { i.style.display = 'none'; i.value = ''; }
+}
+function obterAssuntoFinal(sid, oid){
+  const s = document.getElementById(sid), o = document.getElementById(oid);
+  if (!s) return '';
+  if (s.value === 'OUTRO') return (o && o.value.trim()) ? o.value.trim() : 'OUTRO';
+  return s.value;
+}
+
+/* ============ CÁLCULO DE PASTA ============ */
+function calcularProximaPastaPorNome(nome, idIgn = null){
+  if (!nome || !nome.trim()) return "A-1";
+  const primeira = letraDoNome(nome);
+  const todos = [...dadosApp.processos, ...dadosApp.lixeira];
+  let maior = 0;
+  todos.forEach(p => {
+    if (!p || (idIgn !== null && String(p.id) === String(idIgn))) return;
+    if (!p.pasta || typeof p.pasta !== 'string') return;
+    let n = p.pasta.trim().toUpperCase().replace(/\s+/g,'').replace(/[–—_]/g,'-');
+    const m = n.match(/^([A-Z])-(\d+)$/); if (!m) return;
+    const lp = m[1], np = parseInt(m[2], 10); if (isNaN(np)) return;
+    const iy = (primeira === 'I' || primeira === 'Y') && (lp === 'I' || lp === 'Y');
+    if (lp === primeira || iy) if (np > maior) maior = np;
+  });
+  return `${primeira}-${maior + 1}`;
+}
+function pastaJaExiste(pasta, idIgn = null){
+  const norm = s => String(s||'').trim().toUpperCase().replace(/\s+/g,'').replace(/[–—_]/g,'-');
+  const alvo = norm(pasta);
+  if (!alvo) return null;
+  const todos = [...dadosApp.processos, ...dadosApp.lixeira];
+  for (const p of todos) {
+    if (idIgn !== null && String(p.id) === String(idIgn)) continue;
+    if (norm(p.pasta) === alvo) return p;
+  }
+  return null;
+}
+function atualizarPastaAutomaticamente(forcar){
+  if (document.getElementById('proc-edit-id').value) return;
+  const i = document.querySelector('.c-nome'), p = document.getElementById('proc-pasta');
+  if (!i || !p) return;
+  const n = i.value; 
+  if ((!n || !n.trim()) && !forcar) return;
+  if (!n || !n.trim()) { p.value = ''; return; }
+  p.value = calcularProximaPastaPorNome(n, null);
+}
+function gerarPastaAoClicarCrianca(inp){
+  if (document.getElementById('proc-edit-id').value) return;
+  if (!inp || !inp.value || !inp.value.trim()) return;
+  const p = document.getElementById('proc-pasta'); if (!p) return;
+  p.value = calcularProximaPastaPorNome(inp.value, null);
+}
+function verificarCriancaExistente(inp){
+  if (document.getElementById('proc-edit-id').value) return;
+  const nome = inp.value.trim().toUpperCase();
+  if (nome.length < 5) return;
+  const existente = dadosApp.processos.find(p => p.criancas && p.criancas.some(c => (c.nome || '').trim().toUpperCase() === nome));
+  if (existente) {
+    const msg = `⚠️ ATENÇÃO: Já existe um processo cadastrado para "${inp.value}" na pasta ${existente.pasta}.\n\nResponsável: ${existente.responsavel}\nAssunto: ${existente.assunto}\n\nDeseja continuar o cadastro mesmo assim?`;
+    if (!confirm(msg)) {
+      inp.value = '';
+      document.getElementById('proc-pasta').value = '';
+    }
+  }
+}
+function adicionarLinhaCrianca(nomeVal = '', nascVal = ''){
+  const c = document.getElementById('lista-criancas');
+  const d = document.createElement('div');
+  d.className = 'crianca-row';
+  const nomeEsc = escapeHtml(nomeVal);
+  const nascEsc = escapeHtml(nascVal);
+  d.innerHTML = `
+    <input type="text" placeholder="Nome Completo da Criança / Adolescente" class="c-nome" value="${nomeEsc}" required style="flex:2;"
+           oninput="if(!document.getElementById('proc-edit-id').value) atualizarPastaAutomaticamente()"
+           onblur="verificarCriancaExistente(this)"
+           onclick="gerarPastaAoClicarCrianca(this)">
+    <input type="date" placeholder="Data Nasc." class="c-nasc" value="${nascEsc}" style="flex:1;">
+    <button type="button" class="btn btn-danger" onclick="removerLinhaCrianca(this)" style="padding:9px 12px;">×</button>`;
+  c.appendChild(d);
+}
+function removerLinhaCrianca(btn){
+  if (!confirm('Deseja realmente remover esta linha?')) return;
+  if (document.querySelectorAll('.crianca-row').length > 1) {
+    btn.parentElement.remove();
+    if (!document.getElementById('proc-edit-id').value) atualizarPastaAutomaticamente();
+  } else alert('O processo deve conter ao menos uma criança/adolescente.');
+}
+
+/* ============ PROCESSOS ============ */
+async function salvarProcesso(e){
+  e.preventDefault();
+  const editId = document.getElementById('proc-edit-id').value;
+  const pasta = document.getElementById('proc-pasta').value.trim();
+
+  const dup = pastaJaExiste(pasta, editId || null);
+  if (dup) { alert(`⚠️ Já existe um processo cadastrado com a pasta "${pasta}"!\n\nCriança: ${dup.criancas?.[0]?.nome || '-'}\nResponsável: ${dup.responsavel}\n\nEscolha outra pasta.`); return; }
+
+  const criancas = [];
+  document.querySelectorAll('.crianca-row').forEach(r => {
+    criancas.push({ nome: r.querySelector('.c-nome').value, nasc: r.querySelector('.c-nasc').value });
+  });
+
+  const hoje = hojeLocal();
+  const aF = obterAssuntoFinal('proc-assunto','proc-assunto-outro');
+
+  if (editId) {
+    const idx = dadosApp.processos.findIndex(p => String(p.id) === String(editId));
+    if (idx === -1) { alert('Processo não encontrado.'); return; }
+    dadosApp.processos[idx] = { ...dadosApp.processos[idx],
+      pasta, nProcesso: document.getElementById('proc-num').value,
+      criancas,
+      responsavel: document.getElementById('proc-responsavel').value,
+      endereco: document.getElementById('proc-endereco').value,
+      localidade: document.getElementById('proc-localidade').value,
+      assunto: aF,
+      conselheiro: document.getElementById('proc-conselheiro').value,
+      sei: document.getElementById('proc-sei').value,
+      observacao: document.getElementById('proc-obs').value
+    };
+    if (USE_SERVER) await apiPost('saveProcesso', { processo: dadosApp.processos[idx] });
+    else await persistir();
+    alert('Processo atualizado com sucesso!');
+    cancelarEdicao();
+  } else {
+    const novo = {
+      id: Date.now() + Math.random(),
+      pasta, nProcesso: document.getElementById('proc-num').value,
+      criancas,
+      responsavel: document.getElementById('proc-responsavel').value,
+      endereco: document.getElementById('proc-endereco').value,
+      localidade: document.getElementById('proc-localidade').value,
+      assunto: aF,
+      conselheiro: document.getElementById('proc-conselheiro').value,
+      sei: document.getElementById('proc-sei').value,
+      observacao: document.getElementById('proc-obs').value,
+      dataCadastro: hoje,
+      historicoServicos: []
+    };
+    dadosApp.processos.push(novo);
+    if (USE_SERVER) await apiPost('saveProcesso', { processo: novo });
+    else await persistir();
+    alert(`Processo cadastrado com sucesso na pasta ${pasta}!`);
+    limparFormularioProcesso();
+  }
+  renderizarTudo();
+}
+function editarProcesso(id){
+  const p = dadosApp.processos.find(i => String(i.id) === String(id)); if (!p) return;
+  document.getElementById('proc-edit-id').value = p.id;
+  document.getElementById('proc-pasta').value = p.pasta;
+  document.getElementById('proc-num').value = p.nProcesso || '';
+  document.getElementById('proc-responsavel').value = p.responsavel || '';
+  document.getElementById('proc-endereco').value = p.endereco || '';
+  document.getElementById('proc-localidade').value = p.localidade || '';
+  const sA = document.getElementById('proc-assunto'), iO = document.getElementById('proc-assunto-outro');
+  const a = p.assunto || '';
+  const naLista = ASSUNTOS_PADRAO.filter(x => x !== 'OUTRO').includes(a);
+  if (naLista || a === '') { sA.value = a; iO.style.display = 'none'; iO.value = ''; }
+  else { sA.value = 'OUTRO'; iO.style.display = 'block'; iO.value = a; }
+  document.getElementById('proc-conselheiro').value = p.conselheiro || '';
+  document.getElementById('proc-sei').value = p.sei || '';
+  document.getElementById('proc-obs').value = p.observacao || '';
+  const c = document.getElementById('lista-criancas'); c.innerHTML = '';
+  if (p.criancas?.length) p.criancas.forEach(x => adicionarLinhaCrianca(x.nome, x.nasc));
+  else adicionarLinhaCrianca();
+  document.getElementById('titulo-form-processo').innerText = `Editando Processo (Pasta: ${p.pasta})`;
+  document.getElementById('btn-salvar-processo').innerText = 'Salvar Alterações';
+  document.getElementById('btn-cancelar-edicao').style.display = 'inline-block';
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+function cancelarEdicao(){
+  document.getElementById('proc-edit-id').value = '';
+  document.getElementById('titulo-form-processo').innerText = 'Novo Cadastro de Processo';
+  document.getElementById('btn-salvar-processo').innerText = 'Cadastrar Processo';
+  document.getElementById('btn-cancelar-edicao').style.display = 'none';
+  limparFormularioProcesso();
+}
+function limparFormularioProcesso(){
+  document.getElementById('form-processo').reset();
+  document.getElementById('proc-assunto-outro').style.display = 'none';
+  document.getElementById('proc-assunto-outro').value = '';
+  document.getElementById('lista-criancas').innerHTML = `
+    <div class="crianca-row">
+      <input type="text" placeholder="Nome Completo da Criança / Adolescente" class="c-nome" required style="flex:2;"
+             oninput="if(!document.getElementById('proc-edit-id').value) atualizarPastaAutomaticamente()"
+             onblur="verificarCriancaExistente(this)"
+             onclick="gerarPastaAoClicarCrianca(this)">
+      <input type="date" placeholder="Data Nasc." class="c-nasc" style="flex:1;">
+      <button type="button" class="btn btn-danger" onclick="removerLinhaCrianca(this)" style="padding:9px 12px;">×</button>
+    </div>`;
+}
+function limparFormularioAtendimento(){
+  document.getElementById('form-atendimento').reset();
+  document.getElementById('aten-assunto-outro').style.display = 'none';
+  document.getElementById('aten-assunto-outro').value = '';
+  inicializarDatas();
+}
+function filtrarPorLetra(letra, botao){
+  filtroLetra = letraNormalizadaParaFiltro(letra);
+  paginaAtual = 1;
+  document.querySelectorAll('.btn-letra').forEach(b => b.classList.remove('ativo'));
+  if (botao) botao.classList.add('ativo');
+  renderizarProcessos();
+}
+function atualizarContadoresLetras(){
+  const c = {};
+  for (let i = 65; i <= 90; i++) c[String.fromCharCode(i)] = 0;
+  const total = dadosApp.processos.length;
+  dadosApp.processos.forEach(p => {
+    const l = extrairLetraInicialPasta(p.pasta); if (!l) return;
+    const lf = (l === 'Y') ? 'I' : l;
+    if (c.hasOwnProperty(lf)) c[lf]++;
+  });
+  document.querySelectorAll('.contador').forEach(el => {
+    const l = el.dataset.contador;
+    if (c.hasOwnProperty(l)) el.textContent = c[l];
+  });
+  const res = document.getElementById('barra-letras-resultado');
+  if (res) {
+    if (filtroLetra === 'I') res.innerHTML = `Grupo <strong>I · Y</strong> — ${c['I']||0} processo(s)`;
+    else if (filtroLetra) res.innerHTML = `Letra <strong>${filtroLetra}</strong> — ${c[filtroLetra]||0} processo(s)`;
+    else res.innerHTML = `Total geral: <strong>${total}</strong> processo(s)`;
+  }
+}
+function renderizarProcessos(){
+  const tb = document.getElementById('tabela-processos');
+  const termo = document.getElementById('filtro-processo').value.toLowerCase();
+  tb.innerHTML = '';
+  const fil = dadosApp.processos.filter(p => {
+    if (filtroLetra) {
+      const l = letraNormalizadaParaFiltro(extrairLetraInicialPasta(p.pasta));
+      if (l !== filtroLetra) return false;
+    }
+    return (
+      (p.pasta||'').toLowerCase().includes(termo) ||
+      (p.nProcesso||'').toLowerCase().includes(termo) ||
+      (p.responsavel||'').toLowerCase().includes(termo) ||
+      (p.assunto||'').toLowerCase().includes(termo) ||
+      (p.endereco||'').toLowerCase().includes(termo) ||
+      (p.localidade||'').toLowerCase().includes(termo) ||
+      (p.sei||'').toLowerCase().includes(termo) ||
+      (p.observacao||'').toLowerCase().includes(termo) ||
+      (p.criancas||[]).some(x => (x.nome||'').toLowerCase().includes(termo))
+    );
+  });
+  if (fil.length === 0) {
+    let m = 'Nenhum processo encontrado.';
+    if (filtroLetra === 'I') m = 'Nenhum processo no grupo "I · Y".';
+    else if (filtroLetra) m = `Nenhum processo na letra "${filtroLetra}".`;
+    tb.innerHTML = `<tr><td colspan="13" class="empty-state">${m}</td></tr>`;
+    document.getElementById('paginacao-processos').innerHTML = '';
+    atualizarContadoresLetras();
+    return;
+  }
+  const totalPg = Math.ceil(fil.length / itensPorPagina);
+  if (paginaAtual > totalPg) paginaAtual = totalPg;
+  if (paginaAtual < 1) paginaAtual = 1;
+  const ini = (paginaAtual - 1) * itensPorPagina;
+  fil.slice(ini, ini + itensPorPagina).forEach(p => {
+    const nc = (p.criancas||[]).map(c => escapeHtml(c.nome)).join('<br>');
+    const nn = (p.criancas||[]).map(c => escapeHtml(c.nasc || '-')).join('<br>');
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><input type="checkbox"></td>
+      <td><strong>${escapeHtml(p.pasta)}</strong></td>
+      <td>${escapeHtml(p.nProcesso || '-')}</td>
+      <td>${nc}</td>
+      <td>${nn}</td>
+      <td>${escapeHtml(p.responsavel)}</td>
+      <td>${escapeHtml(p.endereco)}</td>
+      <td>${escapeHtml(p.localidade)}</td>
+      <td>${escapeHtml(p.assunto)}</td>
+      <td>${escapeHtml(p.conselheiro)}</td>
+      <td>${escapeHtml(p.sei || '-')}</td>
+      <td>${escapeHtml(p.observacao || '-')}</td>
+      <td>
+        <div style="display:flex; gap:4px; flex-wrap:wrap;">
+          <button class="btn" style="padding:4px 6px; font-size:10px;" onclick="abrirHistoricoFamilia('${escapeAttr(p.id)}')">📂 Histórico</button>
+          <button class="btn btn-success" style="padding:4px 6px; font-size:10px;" onclick="abrirCapaProcesso('${escapeAttr(p.id)}')">🖨️ Capa</button>
+          <button class="btn btn-warning" style="padding:4px 6px; font-size:10px;" onclick="editarProcesso('${escapeAttr(p.id)}')">Editar</button>
+          <button class="btn btn-danger" style="padding:4px 6px; font-size:10px;" onclick="moverParaLixeira('${escapeAttr(p.id)}')">Excluir</button>
+        </div>
+      </td>`;
+    tb.appendChild(tr);
+  });
+  renderizarPaginacao(fil.length, totalPg);
+  atualizarContadoresLetras();
+}
+function renderizarPaginacao(total, totalPg){
+  const c = document.getElementById('paginacao-processos');
+  if (totalPg <= 1) { c.innerHTML = `<span>Mostrando ${total} registro(s)</span>`; return; }
+  let h = `<span>Página ${paginaAtual} de ${totalPg} (${total} registros)</span>`;
+  h += `<div class="pagination-buttons">`;
+  h += `<button class="btn btn-secondary" style="padding:4px 8px; font-size:11px;" ${paginaAtual===1?'disabled':''} onclick="mudarPagina(${paginaAtual-1})">Anterior</button>`;
+  h += `<button class="btn btn-secondary" style="padding:4px 8px; font-size:11px;" ${paginaAtual===totalPg?'disabled':''} onclick="mudarPagina(${paginaAtual+1})">Próxima</button>`;
+  h += `</div>`;
+  c.innerHTML = h;
+}
+function mudarPagina(n){ paginaAtual = n; renderizarProcessos(); }
+
+/* ============ HISTÓRICO FAMÍLIA ============ */
+function abrirHistoricoFamilia(id){
+  const p = dadosApp.processos.find(i => String(i.id) === String(id)); if (!p) return;
+  document.getElementById('hist-proc-id').value = p.id;
+  document.getElementById('hist-info-pasta').innerText = p.pasta;
+  document.getElementById('hist-info-responsavel').innerText = p.responsavel;
+  inicializarDatas();
+  renderizarTabelaHistoricoFamilia(p);
+  document.getElementById('modal-historico').classList.add('active');
+}
+function fecharModalHistorico(){
+  document.getElementById('modal-historico').classList.remove('active');
+  document.getElementById('form-add-historico').reset();
+  document.getElementById('hist-assunto-outro').style.display = 'none';
+  document.getElementById('hist-assunto-outro').value = '';
+  inicializarDatas();
+}
+async function adicionarServicoHistorico(e){
+  e.preventDefault();
+  const pid = document.getElementById('hist-proc-id').value;
+  const p = dadosApp.processos.find(i => String(i.id) === String(pid)); if (!p) return;
+  if (!p.historicoServicos) p.historicoServicos = [];
+  const aH = obterAssuntoFinal('hist-assunto','hist-assunto-outro');
+  const srv = {
+    id: Date.now() + Math.random(),
+    data: document.getElementById('hist-data').value,
+    conselheiro: document.getElementById('hist-conselheiro').value,
+    assunto: aH,
+    servico: document.getElementById('hist-servico').value
+  };
+  p.historicoServicos.unshift(srv);
+  if (USE_SERVER) await apiPost('saveHistorico', { procId: pid, servico: srv });
+  else await persistir();
+  renderizarTabelaHistoricoFamilia(p);
+  atualizarDashboard();
+  document.getElementById('hist-servico').value = '';
+  document.getElementById('hist-assunto').value = '';
+  document.getElementById('hist-assunto-outro').style.display = 'none';
+  document.getElementById('hist-assunto-outro').value = '';
+  inicializarDatas();
+  alert('Serviço adicionado ao histórico da família com sucesso!');
+}
+function renderizarTabelaHistoricoFamilia(p){
+  const tb = document.getElementById('tabela-historico-familia');
+  tb.innerHTML = '';
+  if (!p.historicoServicos || p.historicoServicos.length === 0) {
+    tb.innerHTML = `<tr><td colspan="5" class="empty-state">Nenhum serviço registrado no histórico desta família.</td></tr>`;
+    return;
+  }
+  p.historicoServicos.forEach(h => {
+    const df = h.data ? h.data.split('-').reverse().join('/') : '-';
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${escapeHtml(df)}</td>
+      <td>${escapeHtml(h.conselheiro)}</td>
+      <td>${escapeHtml(h.assunto || '-')}</td>
+      <td>${escapeHtml(h.servico)}</td>
+      <td><button class="btn btn-danger" style="padding:2px 6px; font-size:10px;" onclick="excluirServicoHistorico('${escapeAttr(p.id)}','${escapeAttr(h.id)}')">Excluir</button></td>`;
+    tb.appendChild(tr);
+  });
+}
+async function excluirServicoHistorico(pid, sid){
+  if (!confirm('Deseja realmente excluir este registro do histórico?')) return;
+  const p = dadosApp.processos.find(i => String(i.id) === String(pid)); if (!p) return;
+  p.historicoServicos = (p.historicoServicos||[]).filter(h => String(h.id) !== String(sid));
+  if (USE_SERVER) await apiPost('deleteHistorico', { procId: pid, servicoId: sid });
+  else await persistir();
+  renderizarTabelaHistoricoFamilia(p);
+  atualizarDashboard();
+}
+
+/* ============ CAPA ============ */
+function abrirCapaProcesso(id){
+  const p = dadosApp.processos.find(i => String(i.id) === String(id)); if (!p) return;
+  document.getElementById('capa-pasta').innerText = p.pasta || '---';
+  document.getElementById('capa-num-processo').innerText = p.nProcesso ? p.nProcesso.toUpperCase() : '---';
+  document.getElementById('capa-crianca').innerText = p.criancas?.length ? p.criancas.map(c => c.nome).join(' / ').toUpperCase() : '---';
+  document.getElementById('capa-responsavel').innerText = p.responsavel ? p.responsavel.toUpperCase() : '---';
+  const el = `${p.endereco||''} ${p.localidade?' - '+p.localidade:''}`.trim().toUpperCase();
+  document.getElementById('capa-endereco-localidade').innerText = el || '---';
+  document.getElementById('capa-assunto').innerText = p.assunto ? p.assunto.toUpperCase() : '---';
+  document.getElementById('capa-conselheiro').innerText = p.conselheiro ? p.conselheiro.toUpperCase() : '---';
+  document.getElementById('capa-sei').innerText = p.sei ? p.sei.toUpperCase() : '---';
+  document.getElementById('modal-imprimir-capa').classList.add('active');
+}
+function fecharModalCapa(){ document.getElementById('modal-imprimir-capa').classList.remove('active'); }
+
+/* ============ LIXEIRA ============ */
+async function moverParaLixeira(id){
+  const p = dadosApp.processos.find(x => String(x.id) === String(id)); if (!p) return;
+  if (!confirm(`Deseja realmente excluir o processo da pasta ${p.pasta}? Ele irá para a lixeira.`)) return;
+  const idx = dadosApp.processos.findIndex(x => String(x.id) === String(id));
+  if (idx !== -1) {
+    const rem = dadosApp.processos.splice(idx, 1)[0];
+    dadosApp.lixeira.push(rem);
+    if (USE_SERVER) await apiPost('moveToLixeira', { id });
+    else await persistir();
+    renderizarTudo();
+  }
+}
+function renderizarLixeira(){
+  const tb = document.getElementById('tabela-lixeira'); tb.innerHTML = '';
+  if (dadosApp.lixeira.length === 0) { tb.innerHTML = `<tr><td colspan="7" class="empty-state">A lixeira está vazia.</td></tr>`; return; }
+  dadosApp.lixeira.forEach(p => {
+    const nc = (p.criancas||[]).map(c => escapeHtml(c.nome)).join('<br>');
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><strong>${escapeHtml(p.pasta)}</strong></td>
+      <td>${escapeHtml(p.nProcesso || '-')}</td>
+      <td>${nc}</td>
+      <td>${escapeHtml(p.responsavel)}</td>
+      <td>${escapeHtml(p.assunto)}</td>
+      <td>${escapeHtml(p.conselheiro)}</td>
+      <td style="display:flex; gap:4px;">
+        <button class="btn btn-success" style="padding:4px 8px; font-size:10px;" onclick="restaurarProcesso('${escapeAttr(p.id)}')">Restaurar</button>
+        <button class="btn btn-danger" style="padding:4px 8px; font-size:10px;" onclick="excluirDefinitivo('${escapeAttr(p.id)}')">Excluir</button>
+      </td>`;
+    tb.appendChild(tr);
+  });
+}
+async function restaurarProcesso(id){
+  if (!confirm('Deseja realmente restaurar este processo?')) return;
+  const idx = dadosApp.lixeira.findIndex(p => String(p.id) === String(id));
+  if (idx !== -1) {
+    const r = dadosApp.lixeira.splice(idx, 1)[0];
+    dadosApp.processos.push(r);
+    if (USE_SERVER) await apiPost('restoreFromLixeira', { id });
+    else await persistir();
+    renderizarTudo();
+    alert(`Processo da pasta ${r.pasta} restaurado!`);
+  }
+}
+async function excluirDefinitivo(id){
+  const p = dadosApp.lixeira.find(x => String(x.id) === String(id)); if (!p) return;
+  if (!confirm(`ATENÇÃO: Excluir DEFINITIVAMENTE o processo da pasta ${p.pasta}?`)) return;
+  dadosApp.lixeira = dadosApp.lixeira.filter(x => String(x.id) !== String(id));
+  if (USE_SERVER) await apiPost('deleteDefinitivo', { id });
+  else await persistir();
+  renderizarTudo();
+  alert('Processo excluído definitivamente.');
+}
+async function esvaziarLixeira(){
+  if (dadosApp.lixeira.length === 0) { alert('A lixeira já está vazia.'); return; }
+  const s = prompt("Área Restrita!\nDigite a senha de administrador:");
+  if (s === null) return;
+  if (s !== "admin123") { alert("Senha incorreta!"); return; }
+  if (!confirm("ATENÇÃO: Ação irreversível. Prosseguir?")) return;
+  dadosApp.lixeira = [];
+  if (USE_SERVER) await apiPost('esvaziarLixeira', {});
+  else await persistir();
+  renderizarTudo();
+  alert("Lixeira esvaziada.");
+}
+async function solicitarApagarTudo(){
+  const s = prompt("Área Restrita!\nDigite a senha de administrador:");
+  if (s === null) return;
+  if (s !== "admin123") { alert("Senha incorreta!"); return; }
+  if (!confirm("ATENÇÃO: Todos os processos ativos serão movidos para a lixeira. Prosseguir?")) return;
+  dadosApp.lixeira.push(...dadosApp.processos);
+  dadosApp.processos = [];
+  if (USE_SERVER) await apiPost('apagarTudo', {});
+  else await persistir();
+  renderizarTudo();
+  cancelarEdicao();
+  alert("Todos os registros foram movidos para a lixeira.");
+}
+
+/* ============ IMPORTAÇÃO EXCEL ============ */
+function abrirModalImportar(){ document.getElementById('modal-importar').classList.add('active'); }
+function fecharModalImportar(){
+  document.getElementById('modal-importar').classList.remove('active');
+  document.getElementById('texto-excel').value = '';
+}
+async function processarImportacaoExcel(){
+  const texto = document.getElementById('texto-excel').value.trim();
+  if (!texto) { alert('Cole os dados antes de processar.'); return; }
+  const linhas = texto.split(/\r?\n/);
+  const hoje = hojeLocal();
+  let sep = '\t';
+  if (!linhas.some(l => l.includes('\t'))) sep = linhas.some(l => l.includes(';')) ? ';' : ',';
+  const novos = [];
+  linhas.forEach((linha, idx) => {
+    if (!linha.trim()) return;
+    const c = linha.split(sep).map(x => x.trim());
+    if (idx === 0 && (c[0]?.toLowerCase().includes('pasta') || c[2]?.toLowerCase().includes('criança'))) return;
+    if (c.length < 3) return;
+    const pOri = c[0] || '', nCri = c[2] || 'Não informado';
+    const letra = letraDoNome(nCri);
+    let pFin;
+    const pT = pOri.trim();
+    if (pT === '') pFin = calcularProximaPastaPorNome(nCri, null);
+    else {
+      const pn = pT.replace(/[–—_]/g,'-').replace(/\s+/g,'');
+      const m1 = pn.match(/^([A-Za-z])-(\d+)$/), m2 = pn.match(/^(\d+)$/);
+      if (m1) pFin = `${letra}-${m1[2]}`;
+      else if (m2) pFin = `${letra}-${m2[1]}`;
+      else pFin = pOri;
+    }
+    if (pastaJaExiste(pFin)) {
+      const n = parseInt(pFin.split('-')[1] || '0', 10) + 1000;
+      pFin = `${letra}-${n}`;
+    }
+    novos.push({
+      id: Date.now() + Math.random() + idx,
+      pasta: pFin, nProcesso: c[1] || '',
+      criancas: [{ nome: nCri, nasc: c[3] || '' }],
+      responsavel: c[4] || 'Não informado',
+      endereco: c[5] || '', localidade: c[6] || 'Paranoá',
+      assunto: c[7] || 'Negligência: Educação',
+      conselheiro: c[8] || CONSELHEIROS_INICIAIS[0],
+      sei: c[9] || '', observacao: c[10] || '',
+      dataCadastro: hoje, historicoServicos: []
+    });
+  });
+  if (novos.length === 0) { alert('Nenhuma linha válida encontrada.'); return; }
+  dadosApp.processos.push(...novos);
+  if (USE_SERVER) await apiPost('importProcessos', { processos: novos });
+  else await persistir();
+  renderizarTudo();
+  fecharModalImportar();
+  alert(`Importação concluída! ${novos.length} processo(s) importado(s).`);
+}
+
+/* ============ ATENDIMENTOS ============ */
+async function salvarAtendimento(e){
+  e.preventDefault();
+  const dh = document.getElementById('aten-datahora').value;
+  const dv = dh ? dh.slice(0,10) : hojeLocal();
+  const aF = obterAssuntoFinal('aten-assunto','aten-assunto-outro');
+  const novo = {
+    id: Date.now() + Math.random(),
+    nome: document.getElementById('aten-nome').value,
+    cidade: document.getElementById('aten-cidade').value,
+    assunto: aF,
+    conselheiro: document.getElementById('aten-conselheiro').value,
+    dataHora: dh, data: dv,
+    observacao: document.getElementById('aten-observacao').value
+  };
+  dadosApp.atendimentos.push(novo);
+  if (USE_SERVER) await apiPost('saveAtendimento', { atendimento: novo });
+  else await persistir();
+  renderizarTudo();
+  limparFormularioAtendimento();
+  alert('Atendimento registado com sucesso!');
+}
+function renderizarAtendimentos(){
+  const tb = document.getElementById('tabela-atendimentos');
+  const termo = (document.getElementById('filtro-atendimento')?.value || '').toLowerCase();
+  const lista = dadosApp.atendimentos.filter(a =>
+    !termo || (a.nome||'').toLowerCase().includes(termo) ||
+    (a.cidade||'').toLowerCase().includes(termo) ||
+    (a.assunto||'').toLowerCase().includes(termo) ||
+    (a.conselheiro||'').toLowerCase().includes(termo) ||
+    (a.observacao||'').toLowerCase().includes(termo)
+  );
+  tb.innerHTML = lista.length === 0
+    ? `<tr><td colspan="7" class="empty-state">Nenhum atendimento registado.</td></tr>`
+    : lista.map(a => `<tr>
+        <td>${escapeHtml(a.dataHora ? a.dataHora.replace('T',' ') : '-')}</td>
+        <td><strong>${escapeHtml(a.nome)}</strong></td>
+        <td>${escapeHtml(a.cidade || 'Paranoá')}</td>
+        <td>${escapeHtml(a.assunto)}</td>
+        <td>${escapeHtml(a.conselheiro)}</td>
+        <td>${escapeHtml(a.observacao || '-')}</td>
+        <td><button class="btn btn-danger" style="padding:4px 8px; font-size:10px;" onclick="excluirAtendimento('${escapeAttr(a.id)}')">Excluir</button></td>
+      </tr>`).join('');
+}
+async function excluirAtendimento(id){
+  if (!confirm('Deseja realmente excluir este atendimento?')) return;
+  dadosApp.atendimentos = dadosApp.atendimentos.filter(a => String(a.id) !== String(id));
+  if (USE_SERVER) await apiPost('deleteAtendimento', { id });
+  else await persistir();
+  renderizarTudo();
+}
+
+/* ============ EQUIPE ============ */
+async function adicionarMembroEquipe(){
+  const inp = document.getElementById('novo-membro');
+  const n = inp.value.trim().toUpperCase();
+  if (!n) return;
+  if (dadosApp.equipe.includes(n)) { alert('Este conselheiro já está na lista.'); return; }
+  dadosApp.equipe.push(n);
+  if (USE_SERVER) await apiPost('addEquipe', { nome: n });
+  else await persistir();
+  popularSelects();
+  inp.value = '';
+}
+async function editarMembroEquipe(nomeAtual){
+  const novo = prompt('Editar nome do conselheiro:', nomeAtual);
+  if (novo === null) return;
+  const nt = novo.trim().toUpperCase();
+  if (!nt) { alert('O nome não pode ficar vazio.'); return; }
+  if (nt === nomeAtual) return;
+  if (dadosApp.equipe.includes(nt)) { alert('Já existe outro conselheiro com este nome.'); return; }
+  const idx = dadosApp.equipe.indexOf(nomeAtual);
+  if (idx !== -1) {
+    dadosApp.equipe[idx] = nt;
+    dadosApp.processos.forEach(p => {
+      if (p.conselheiro === nomeAtual) p.conselheiro = nt;
+      if (p.historicoServicos) p.historicoServicos.forEach(h => { if (h.conselheiro === nomeAtual) h.conselheiro = nt; });
+    });
+    if (USE_SERVER) await apiPost('editEquipe', { nomeAtual, novoNome: nt });
+    else await persistir();
+    popularSelects();
+    renderizarProcessos();
+  }
+}
+async function removerMembroEquipe(nome){
+  if (!confirm(`Remover "${nome}" da lista?`)) return;
+  dadosApp.equipe = dadosApp.equipe.filter(x => x !== nome);
+  if (USE_SERVER) await apiPost('removeEquipe', { nome });
+  else await persistir();
+  popularSelects();
+}
+function renderizarTabelaEquipe(){
+  const tb = document.getElementById('tabela-equipe'); if (!tb) return;
+  tb.innerHTML = dadosApp.equipe.map(m => `
+    <tr>
+      <td>${escapeHtml(m)}</td>
+      <td style="display:flex; gap:4px;">
+        <button class="btn btn-warning" style="padding:4px 8px; font-size:10px;" onclick="editarMembroEquipe('${escapeAttr(m)}')">Editar</button>
+        <button class="btn btn-danger" style="padding:4px 8px; font-size:10px;" onclick="removerMembroEquipe('${escapeAttr(m)}')">Remover</button>
+      </td>
+    </tr>`).join('');
+}
+
+/* ============ ESTATÍSTICAS ============ */
+function atualizarEstatisticasCabecalho(){
+  document.getElementById('stat-badge-pastas').innerText = `${dadosApp.processos.length} REGISTROS`;
+  document.getElementById('stat-badge-atendimentos').innerText = `${dadosApp.atendimentos.length} ATENDIMENTOS`;
+  document.getElementById('stat-badge-lixeira').innerText = `${dadosApp.lixeira.length} NA LIXEIRA`;
+}
+function extrairAnoDoProcesso(nP, dataFb){
+  if (nP && nP.includes('/')) {
+    const p = nP.split('/'); const d = p[1].trim();
+    if (/^\d{2}$/.test(d)) return `20${d}`;
+    if (/^\d{4}$/.test(d)) return d;
+  }
+  if (dataFb && dataFb.length >= 4) return dataFb.slice(0,4);
+  return new Date().getFullYear().toString();
+}
+function atualizarDashboard(){
+  let totHist = 0;
+  const aM = {}, cM = {}, anM = {}, meM = {}, diM = {};
+  const nM = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+  dadosApp.processos.forEach(p => {
+    const a = p.assunto || "Não informado"; aM[a] = (aM[a]||0) + 1;
+    const l = p.localidade && p.localidade.trim() ? p.localidade.trim().toUpperCase() : (p.endereco && p.endereco.trim() ? "PARANOÁ" : "NÃO INFORMADO");
+    cM[l] = (cM[l]||0) + 1;
+    const aP = extrairAnoDoProcesso(p.nProcesso, p.dataCadastro);
+    anM[aP] = (anM[aP]||0) + 1;
+    const ds = p.dataCadastro || hojeLocal();
+    const [, mes, dia] = ds.split('-');
+    if (mes) { const nm = nM[parseInt(mes,10)-1] || mes; meM[nm] = (meM[nm]||0) + 1; }
+    if (dia && mes) { const df = `${dia}/${mes}/${aP}`; diM[df] = (diM[df]||0) + 1; }
+    if (p.historicoServicos?.length > 0) {
+      p.historicoServicos.forEach(h => {
+        totHist++;
+        const hd = h.data || hojeLocal();
+        const [ha, hm, hd2] = hd.split('-');
+        if (ha) {
+          anM[ha] = (anM[ha]||0) + 1;
+          if (hm) { const nm = nM[parseInt(hm,10)-1] || hm; meM[nm] = (meM[nm]||0) + 1; }
+          if (hd2 && hm) { const df = `${hd2}/${hm}/${ha}`; diM[df] = (diM[df]||0) + 1; }
+        }
+      });
+    }
+  });
+  dadosApp.atendimentos.forEach(a => {
+    const ass = a.assunto || "Não informado"; aM[ass] = (aM[ass]||0) + 1;
+    const cid = a.cidade && a.cidade.trim() ? a.cidade.trim().toUpperCase() : "PARANOÁ";
+    cM[cid] = (cM[cid]||0) + 1;
+    const ds = a.data || (a.dataHora ? a.dataHora.slice(0,10) : hojeLocal());
+    const [an, mes, dia] = ds.split('-');
+    if (an) {
+      anM[an] = (anM[an]||0) + 1;
+      if (mes) { const nm = nM[parseInt(mes,10)-1] || mes; meM[nm] = (meM[nm]||0) + 1; }
+      if (dia && mes) { const df = `${dia}/${mes}/${an}`; diM[df] = (diM[df]||0) + 1; }
+    }
+  });
+  document.getElementById('p-proc-tot').innerText = dadosApp.processos.length;
+  document.getElementById('p-aten-tot').innerText = dadosApp.atendimentos.length;
+  document.getElementById('p-hist-tot').innerText = totHist;
+  const tA = document.getElementById('dash-tabela-assuntos');
+  const kA = Object.keys(aM).sort((a,b) => aM[b] - aM[a]);
+  tA.innerHTML = kA.length === 0 ? `<tr><td colspan="2" class="empty-state">Sem dados.</td></tr>`
+    : kA.map(k => `<tr><td>${escapeHtml(k)}</td><td style="text-align:center; font-weight:bold;">${aM[k]}</td></tr>`).join('');
+  const tC = document.getElementById('dash-tabela-cidades');
+  const kC = Object.keys(cM).sort((a,b) => cM[b] - cM[a]);
+  tC.innerHTML = kC.length === 0 ? `<tr><td colspan="2" class="empty-state">Sem dados.</td></tr>`
+    : kC.map(k => `<tr><td>${escapeHtml(k)}</td><td style="text-align:center; font-weight:bold;">${cM[k]}</td></tr>`).join('');
+  const tAn = document.getElementById('dash-tabela-anos');
+  const kAn = Object.keys(anM).sort().reverse();
+  tAn.innerHTML = kAn.length === 0 ? `<tr><td colspan="2" class="empty-state">Sem dados.</td></tr>`
+    : kAn.map(k => `<tr><td>${escapeHtml(k)}</td><td style="text-align:center; font-weight:bold;">${anM[k]}</td></tr>`).join('');
+  const tMe = document.getElementById('dash-tabela-meses');
+  const kMe = Object.keys(meM);
+  tMe.innerHTML = kMe.length === 0 ? `<tr><td colspan="2" class="empty-state">Sem dados.</td></tr>`
+    : kMe.map(k => `<tr><td>${escapeHtml(k)}</td><td style="text-align:center; font-weight:bold;">${meM[k]}</td></tr>`).join('');
+  const tDi = document.getElementById('dash-tabela-dias');
+  const kDi = Object.keys(diM).sort().reverse();
+  tDi.innerHTML = kDi.length === 0 ? `<tr><td colspan="2" class="empty-state">Sem dados.</td></tr>`
+    : kDi.map(k => `<tr><td>${escapeHtml(k)}</td><td style="text-align:center; font-weight:bold;">${diM[k]}</td></tr>`).join('');
+}
+
+/* ============ BACKUP / RESTAURAÇÃO ============ */
+function exportarBackupJSON(){
+  const dump = {
+    versao: '1.0',
+    exportadoEm: new Date().toISOString(),
+    processos: dadosApp.processos,
+    lixeira: dadosApp.lixeira,
+    atendimentos: dadosApp.atendimentos,
+    equipe: dadosApp.equipe,
+    administrativos: dadosApp.administrativos
+  };
+  const blob = new Blob([JSON.stringify(dump, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `backup-conselho-${hojeLocal()}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  alert('Backup exportado com sucesso!');
+}
+async function restaurarBackupJSON(ev){
+  const file = ev.target.files?.[0]; if (!file) return;
+  if (!confirm('⚠️ ATENÇÃO: A restauração SUBSTITUIRÁ todos os dados atuais pelos do backup.\n\nDeseja continuar?')) { ev.target.value = ''; return; }
+  try {
+    const txt = await file.text();
+    const d = JSON.parse(txt);
+    if (!d.processos) { alert('Arquivo inválido.'); ev.target.value = ''; return; }
+    dadosApp.processos      = d.processos || [];
+    dadosApp.lixeira        = d.lixeira || [];
+    dadosApp.atendimentos   = d.atendimentos || [];
+    dadosApp.equipe         = d.equipe || CONSELHEIROS_INICIAIS.slice();
+    dadosApp.administrativos= d.administrativos || ADMINISTRATIVOS_INICIAIS.slice();
+    if (USE_SERVER) {
+      for (const p of dadosApp.processos) await apiPost('saveProcesso', { processo: p });
+      for (const a of dadosApp.atendimentos) await apiPost('saveAtendimento', { atendimento: a });
+    } else {
+      await persistir();
+    }
+    popularSelects();
+    renderizarTudo();
+    alert(`✅ Backup restaurado! ${dadosApp.processos.length} processos, ${dadosApp.atendimentos.length} atendimentos.`);
+  } catch (e) {
+    alert('Erro ao ler o arquivo: ' + e.message);
+  }
+  ev.target.value = '';
+}
+
+/* ============ EXPORTAR CSV ============ */
+function exportarCSV(){
+  const linhas = [['Pasta','Nº Processo','Crianças','Responsável','Endereço','Localidade','Assunto','Conselheiro','SEI','Observações']];
+  dadosApp.processos.forEach(p => {
+    linhas.push([
+      p.pasta,
+      p.nProcesso || '',
+      (p.criancas||[]).map(c => c.nome).join(' | '),
+      p.responsavel || '',
+      p.endereco || '',
+      p.localidade || '',
+      p.assunto || '',
+      p.conselheiro || '',
+      p.sei || '',
+      p.observacao || ''
+    ]);
+  });
+  const csv = linhas.map(l => l.map(c => `"${String(c).replace(/"/g,'""')}"`).join(';')).join('\r\n');
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `processos-${hojeLocal()}.csv`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+/* ============ RESET ============ */
+async function resetarTudo(){
+  const s = prompt('⚠️ ISSO APAGARÁ TUDO (processos, atendimentos, equipe).\nDigite a senha de administrador:');
+  if (s === null) return;
+  if (s !== 'admin123') { alert('Senha incorreta!'); return; }
+  if (!confirm('Tem CERTEZA? Esta ação é irreversível. Faça backup antes!')) return;
+  if (!confirm('Última confirmação: apagar TODOS os dados agora?')) return;
+  dadosApp = { processos:[], lixeira:[], atendimentos:[], equipe:CONSELHEIROS_INICIAIS.slice(), administrativos:ADMINISTRATIVOS_INICIAIS.slice() };
+  if (USE_SERVER) {
+    await apiPost('esvaziarLixeira', {});
+    await apiPost('apagarTudo', {});
+  }
+  await persistir();
+  popularSelects();
+  renderizarTudo();
+  alert('Sistema resetado.');
+}
+
+/* ============ RENDER TUDO ============ */
+function renderizarTudo(){
+  atualizarContadoresLetras();
+  renderizarProcessos();
+  renderizarLixeira();
+  renderizarAtendimentos();
+  renderizarTabelaEquipe();
+  atualizarEstatisticasCabecalho();
+  atualizarDashboard();
+}
+
+/* ============ AUTO-REFRESH (só em modo servidor) ============ */
+async function refreshSilencioso(){
+  if (!USE_SERVER) return;
+  if (document.querySelector('.modal.active')) return;
+  if (document.getElementById('proc-edit-id').value) return;
+  try { await carregarDados(); renderizarTudo(); } catch(e) {}
+}
+
+/* ============ INICIALIZAÇÃO ============ */
+window.addEventListener('DOMContentLoaded', async () => {
+  const badge = document.getElementById('stat-badge-modo');
+  if (USE_SERVER) { badge.textContent = 'SERVIDOR'; badge.className = 'stat-badge mode-server'; }
+  else { badge.textContent = 'LOCAL'; badge.className = 'stat-badge mode-local'; }
+
+  if (USE_SERVER && location.protocol === 'file:') {
+    alert('⚠️ USE_SERVER está ativo, mas o arquivo está sendo aberto localmente.\n\nAbra via http://localhost/... (XAMPP) ou mude USE_SERVER para false.');
+  }
+
+  try {
+    await carregarDados();
+  } catch (e) {
+    alert('Erro ao carregar dados: ' + e.message);
+    return;
+  }
+  inicializarDatas();
+  popularSelects();
+  renderizarTudo();
+  if (USE_SERVER) setInterval(refreshSilencioso, 15000);
+});
+</script>
+</body>
+</html>
